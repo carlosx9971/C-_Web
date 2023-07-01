@@ -1,0 +1,46 @@
+﻿namespace Funciones_Parte2
+{
+    //Ejemplo 3: generic delegate
+    //Func<>
+    //Action<>
+
+    internal class Program
+    {
+
+        static int Restar(int a, int b)
+        {
+            return a - b;
+        }
+
+        static void MostrarAlgo( string valor, Action<string> f)
+        {
+            f(valor);
+        }
+
+        static void Main(string[] args)
+        {
+            Func<int, int, int> f = Restar;
+
+            var c = f(2, 2);
+
+            //con una func anónima
+            Action<string> fa = (string msg) =>
+            {
+                Console.WriteLine(msg);
+            };
+
+            fa("Hola");
+
+            //pasando una función como parámetro a otra func
+            MostrarAlgo("Hola caraballo", fa);
+
+            //pasando una función como parámetro a otra func. Con una función anónima.
+            MostrarAlgo("Hola caraballo", (string msg) =>
+            {
+                Console.WriteLine(msg);
+            });
+
+
+        }
+    }
+}

@@ -1,0 +1,53 @@
+﻿namespace Funciones_Parte2
+{
+    //Ejemplo 2: delegate
+
+    internal class Program
+    {
+        delegate void HacerAlgoDelegate(string msg);
+
+        delegate int CalcularDelegate(int a, int b);
+
+        static int Restar(int a, int b)
+        {
+            return a - b;
+        }
+
+        static void MostrarAlgo( string valor, HacerAlgoDelegate f)
+        {
+            f(valor);
+        }
+
+        static void Main(string[] args)
+        {
+            var f = new CalcularDelegate(Restar);
+
+            var c = f(2, 2);
+
+            //con una func anónima
+            var fa = delegate (string msg)
+            {
+                Console.WriteLine(msg);
+            };
+
+            fa("Hola");
+
+            //con una func anónima
+            //pasando una función como parámetro a otra func
+            HacerAlgoDelegate fb = delegate (string msg)
+            {
+                Console.WriteLine(msg);
+            };
+
+            MostrarAlgo("Hola caraballo", fb);
+
+            //pasando una función como parámetro a otra func. Con una función anónima.
+            MostrarAlgo("Hola caraballo", (string msg) =>
+            {
+                Console.WriteLine(msg);
+            });
+
+
+        }
+    }
+}
