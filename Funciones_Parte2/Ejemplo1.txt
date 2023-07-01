@@ -1,0 +1,23 @@
+    //Ejemplo 1: funciones de flechas
+
+    internal class Program
+    {
+        static int Sumar(int a, int b) => a + b;
+
+        static int Restar(int a, int b)
+        {
+            return a - b;
+        }
+
+        static void Main(string[] args)
+        {
+            var x1 = Sumar(2, 2);
+            var x2 = Restar(2, 2);
+
+            //con una func anónima
+            int Multiplicar(int a, int b) => a * b;
+
+            var x3 = Multiplicar(2, 2);
+             
+        }
+    }

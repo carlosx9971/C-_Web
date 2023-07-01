@@ -1,0 +1,60 @@
+﻿namespace Funciones_Parte2
+{
+    //Ejemplo 3: generic delegate
+
+    internal class Program
+    {
+
+        //Toma un arreglo de strings y retorna otro arreglo, filtrando por el valor que se indica 
+        //en el parámetro.
+        static List<string> Filtrar(List<string> lista, string valor )
+        {
+            List<string> result = new List<string>();
+
+            foreach(var item in lista )
+            {
+                if(item == valor)
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        //Toma un arreglo de strings y retorna otro arreglo. En este caso el programador
+        //pasa como parámetro una función que sirve para hacer el filtro.
+        static List<string> FiltrarConDel(List<string> lista, Func<string,bool> filterFunc )
+        {
+            List<string> result = new List<string>();
+
+            foreach (var item in lista)
+            {
+                if (filterFunc(item))
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        static void Main(string[] args)
+        {
+            List<string> milista = new List<string>();
+            milista.Add("carlos");
+            milista.Add("pedro");
+            milista.Add("maria");
+            milista.Add("joan");
+            milista.Add("carlos");
+
+            var listaResultado = Filtrar(milista, "carlos");
+
+            foreach(var item in listaResultado)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+    }
+}
