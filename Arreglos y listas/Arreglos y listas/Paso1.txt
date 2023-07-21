@@ -1,0 +1,41 @@
+﻿using System.Collections;
+using System.ComponentModel;
+
+namespace Arreglos_y_listas
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+
+            while (true)
+            {
+                PedirCliente();
+                Console.Write("Desear continuar (S/N) ");
+
+                var s = Console.ReadLine();
+                if (string.IsNullOrEmpty(s) || s.ToUpper() != "S") break;
+            }
+
+
+             
+            Console.WriteLine("Programa terminado!!");
+        }
+
+        static void PedirCliente()
+        {
+            Cliente c = new Cliente();
+            c.Id = 1;
+
+            Console.Clear();
+            Console.WriteLine("Digite el nombre del cliente: ");
+            c.Nombre = Console.ReadLine();
+
+        }
+    }
+
+    
+
+}
